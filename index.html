@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <title>Phonotto - Simple Phone for seniors - Crowdfounding</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
-  <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
-  <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
-  <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
-  <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" rel="stylesheet" type="text/css">
-  <link rel="icon" href="http://next.phonotto.com/favicon.ico" type="image/x-icon">
   <meta property="og:title" content="Next Version Phonotto - Simple Phone for Seniors" />
   <meta property="og:url" content="http://next.phonotto.com" />
   <meta property="og:image" content="http://www.phonotto.com/phonotto-simple-phone-icon.png" />
   <meta property="og:site_name" content="Phonotto Crowdfounding Site" />
   <meta property="og:description" content="Crowdfounding site of the smartest way to convert a cheap smartphone in a simple phone for seniors." />
-  <style type="text/css">
+  <link rel="icon" href="http://next.phonotto.com/favicon.ico" type="image/x-icon">
+  <!--scripts -->
+  <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+  <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
 
+  <!--style -->
+  <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+  <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
   /* Large desktop */
   @media (min-width: 980px) {
     body {
@@ -183,7 +185,26 @@ _gaq.push(['_trackPageview']);
 
   <div class="row-fluid pitch">
     <div class="span6 offset1 video">
-      <img class="img-polaroid" src="http://placehold.it/480x300">
+      <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner" >
+          <div class="item active">
+            <img src="images/slider/phonotto_main.png" alt="Addressbook" />
+          </div>
+          <div class="item">
+            <img src="images/slider/Addressbook.png" alt="Main" />
+          </div>
+          <div class="item">
+            <img src="images/slider/Missed-calls.png" alt="Missed Calls" />
+          </div>
+          <div class="item">
+            <img src="images/slider/Preferences.png" alt="Preferences" />
+          </div>
+
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      </div>
     </div>
 
     <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
@@ -334,8 +355,8 @@ ga('send', 'pageview');
 addthis.layers({
   'theme' : 'transparent',
   'share' : {
-    'position' : 'left',
-    'numPreferredServices' : 3
+    'position' : 'right',
+    'numPreferredServices' : 4
   },
   'follow' : {
     'services' : [
@@ -346,6 +367,13 @@ addthis.layers({
     ]
   }
 });
+
+$(document).ready(function() {
+  $('.carousel').carousel({
+    interval: 2000
+  })
+});
+
 </script>
 <!-- AddThis Smart Layers END -->
 </body>
