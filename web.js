@@ -34,6 +34,17 @@ app.get('/orders', function(request, response) {
   });
 });
 
+app.get('/paypal_failed',function(request,response){
+
+//failed payment, return to home
+ var data = fs.readFileSync('index.html').toString();
+  response.send(data);
+  
+});
+
+
+
+
 // Hit this URL while on example.com/orders to refresh
 app.get('/refresh_orders', function(request, response) {
   https.get("https://coinbase.com/api/v1/orders?api_key=" + process.env.COINBASE_API_KEY, function(res) {
