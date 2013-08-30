@@ -10,6 +10,7 @@ var async = require('async')
         , url = require('url');
 
 var limit_line = 10000;
+var start_date = new Date(2013, 08 , 30 )
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -34,7 +35,15 @@ app.get('/', function(request, response) {
             amount += order.amount;
         });
         
-        response.render("index", {backers: orders_json , amount: amount  , limit_line: limit_line });
+        //calculate date diff.  
+        var today = Date();
+        var diff = start_date -  today;
+        
+        //percentage (limit_line/amount)*100
+        var amount_percentage = Math.round((limit_line/amount)*100);
+        var remains_percentage = 100-amount_percentage;
+        
+        response.render("index", {backers: orders_json , amount: amount  , limit_line: limit_line , date_diff: diff , amount_percentage: amount_percentage , remains_percentage: remains_percentage });
        
     }).error(function(err) {
         console.log(err);

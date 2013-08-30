@@ -268,14 +268,14 @@ p {
 								<h3>$<%= amount %></h3>
 								<p>of $<%= limit_line %></p>
 								<div class="thermometer progress active">
-									<div class="bar bar-success" style="width: 50%;"></div>
-									<div class="bar bar-warning" style="width: 50%;"></div>
+									<div class="bar bar-success" style="width: <%= amount_percentage %>50%;"></div>
+									<div class="bar bar-warning" style="width: <%= remains_percentage %>%;"></div>
 								</div>
 							</div>
 						</div>
 						<div class="row-fluid statistics">
 							<div class="linediv-l">
-								<h3>10</h3>
+								<h3><%= date_diff %></h3>
 								<p>days left</p>
 							</div>
 						</div>
