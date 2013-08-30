@@ -9,6 +9,8 @@ var async = require('async')
         , qs = require('querystring')
         , url = require('url');
 
+var limit_line = 10000;
+
 var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -17,8 +19,30 @@ app.set('port', process.env.PORT || 8080);
 app.use(express.static(__dirname + '/public')); // images
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
-    var data = fs.readFileSync('index.html').toString();
-    response.send(data);
+    
+   // var data = fs.readFileSync('index.html').toString();
+   // response.send(data);
+    
+    //get the amount of money async.
+    //obtain data.
+    global.db.Order.findAll().success(function (orders){
+        var backers = 0;
+        var amount = 0;
+        
+        orders.forEach(function(order) {
+            backers ++;
+            amount += order.amount;
+        });
+        
+        response.render("index", {backers: orders_json , amount: amount  , limit_line: limit_line });
+       
+    }).error(function(err) {
+        console.log(err);
+        response.send("error retrieving amount");
+    });  
+    
+
+    
 });
 
 // Render example.com/orders
@@ -51,6 +75,8 @@ app.get('/payment_success', function(request, response) {
 
     //semplified express edition
     var payment_value = request.query.order;
+    
+    //TO-DO AddOrder
     global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
 
     response.writeHead(301, {'Location': '/'});
