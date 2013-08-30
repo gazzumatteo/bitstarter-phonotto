@@ -38,9 +38,8 @@ app.get('/', function(request, response) {
        
     }).error(function(err) {
         console.log(err);
-        response.send("error retrieving amount");
+        response.send("error retrieving amounts");
     });  
-    
 
     
 });
@@ -71,12 +70,12 @@ app.get('/paypal_failed', function(request, response) {
 
 app.get('/payment_success', function(request, response) {
 
- //TO-DO control if it's really a paypal payment
+ //TODO: control if it's really a paypal payment
 
     //semplified express edition
     var payment_value = request.query.order;
     
-    //TO-DO AddOrder
+    //TODO: AddOrder
     global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
 
     response.writeHead(301, {'Location': '/'});
