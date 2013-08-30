@@ -10,7 +10,7 @@ var async = require('async')
         , url = require('url');
 
 var limit_line = 10000;
-var start_date = new Date(2013, 08 , 30 )
+var start_date = new Date(2013, 08, 30);
 
 var app = express();
 app.set('views', __dirname + '/views');
@@ -20,37 +20,37 @@ app.set('port', process.env.PORT || 8080);
 app.use(express.static(__dirname + '/public')); // images
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
-    
-   // var data = fs.readFileSync('index.html').toString();
-   // response.send(data);
-    
+
+    // var data = fs.readFileSync('index.html').toString();
+    // response.send(data);
+
     //get the amount of money async.
     //obtain data.
-    global.db.Order.findAll().success(function (orders){
+    global.db.Order.findAll().success(function(orders) {
         var backers = 0;
         var amount = 0;
-        
+
         orders.forEach(function(order) {
-            backers ++;
+            backers++;
             amount += order.amount;
         });
-        
+
         //calculate date diff.  
         var today = Date();
-        var diff = start_date -  today;
-        
+        var diff = start_date - today;
+
         //percentage (limit_line/amount)*100
-        var amount_percentage = Math.round((limit_line/amount)*100);
-        var remains_percentage = 100-amount_percentage;
-        
-        response.render("index", {backers: orders_json , amount: amount  , limit_line: limit_line , date_diff: diff , amount_percentage: amount_percentage , remains_percentage: remains_percentage });
-       
+        var amount_percentage = Math.round((limit_line / amount) * 100);
+        var remains_percentage = 100 - amount_percentage;
+
+        response.render("index", {backers: orders_json, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
+
     }).error(function(err) {
         console.log(err);
         response.send("error retrieving amounts");
-    });  
+    });
 
-    
+
 });
 
 // Render example.com/orders
@@ -79,13 +79,27 @@ app.get('/paypal_failed', function(request, response) {
 
 app.get('/payment_success', function(request, response) {
 
- //TODO: control if it's really a paypal payment
+    //TODO: control if it's really a paypal payment
 
     //semplified express edition
     var payment_value = request.query.order;
-    
+
     //TODO: AddOrder
-    global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
+    //  global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
+
+    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()}];
+
+    async.forEach(order_ins, addOrder, function(err) {
+        if (err) {
+            console.log(err);
+            response.send("error adding orders");
+        } else {
+            // orders added successfully
+            response.redirect("/orders");
+        }
+    });
+
+
 
     response.writeHead(301, {'Location': '/'});
     response.end();
@@ -99,7 +113,9 @@ app.get('/payment_success', function(request, response) {
 app.get('/refresh_orders', function(request, response) {
     https.get("https://coinbase.com/api/v1/orders?api_key=" + process.env.COINBASE_API_KEY, function(res) {
         var body = '';
-    res.on('data', function(chunk) {body += chunk;});
+        res.on('data', function(chunk) {
+            body += chunk;
+        });
         res.on('end', function() {
             try {
                 var orders_json = JSON.parse(body);
