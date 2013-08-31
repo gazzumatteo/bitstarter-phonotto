@@ -106,7 +106,11 @@ app.get('/payment_success', function(request, response) {
 
 });
 
-
+app.post('/insertmail/:mail', function(request, response){
+    
+    //save mail, where?
+    
+})
 
 
 // Hit this URL while on example.com/orders to refresh
