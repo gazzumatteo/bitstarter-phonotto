@@ -36,8 +36,9 @@ app.get('/', function(request, response) {
         });
 
         //calculate date diff.  
-        var today = Date();
-        var diff = start_date - today;
+        var today = new Date();
+      	var diff = Math.round((start_date.getDate() - today.getDate()/ (1000*60*60*24)));
+
 
         //percentage (limit_line/amount)*100
         var amount_percentage = Math.round((limit_line / amount) * 100);
