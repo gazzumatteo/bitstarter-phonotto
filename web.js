@@ -116,11 +116,12 @@ app.get('/paypal_success', function(request, response) {
     var Order = global.db.Order;
 
     Order.create({
-        coinbase_id: 'Paypal Donator',
+        coinbase_id: 'Paypal Donator2',
         amount: payment_value,
         time: Date().toString()
     }).success(function(john) {
          response.redirect('/?paypal=success&order='+ payment_value );
+          console.log('Inserted into DB');
     }).error(function() {
         console.log('H. have a problem');
             response.redirect('/?paypal=failed' );
