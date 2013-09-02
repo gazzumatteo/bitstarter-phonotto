@@ -220,6 +220,21 @@ p {
 	<!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
 	<!-- http://stackoverflow.com/a/12270322 -->
 	<div class="container">
+
+<% if( message == "failed" ){ %>
+<div class="alert alert-error">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+<% } %>
+<% if( message == "success" ){ %>
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+<% } %>
+
+
 		<!-- Font and paired font of .heading/.subheading and body from Google Fonts -->
 		<!-- www.google.com/fonts/specimen/Ubuntu -->
 		<!-- www.google.com/fonts/specimen/Ubuntu#pairings -->

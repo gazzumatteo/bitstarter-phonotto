@@ -25,15 +25,15 @@ app.get('/', function(request, response) {
     // response.send(data);
 
     //it's a paypal failed?
-    if (request.query.paypal == "failed") {
-        
+    var message = "";
+    
+    if (request.query.paypal == "failed") {  
         console.log("failed");
-        
-        
+        message = "failed";  
     }
     else if (request.query.paypal == "success") {
-
         console.log("success");
+        message = "success";
     }
 
     //get the amount of money async.
@@ -58,7 +58,7 @@ app.get('/', function(request, response) {
         //remains
         var remains_percentage = 100 - amount_percentage;
 
-        response.render("index", {backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
+        response.render("index", {message: message, backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
 
     }).error(function(err) {
         console.log(err);
