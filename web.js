@@ -118,7 +118,7 @@ app.get('/paypal_success', function(request, response) {
 
 
 //cant'be Payapal Donator... isn't unique
-Order.findAll().success(function(result) {
+Order.findAndCountAll().success(function(result) {
 
    Order.create({
         coinbase_id: 'Paypal Donator' + result.count ,
