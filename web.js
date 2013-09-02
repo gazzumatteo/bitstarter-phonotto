@@ -102,7 +102,7 @@ app.get('/paypal_success', function(request, response) {
     //TODO: AddOrder
     //  global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
 
-    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: new Date.now().toString()}];
+    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()}];
 
     async.forEach(order_ins, addOrder, function(err) {
         if (err) {
