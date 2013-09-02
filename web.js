@@ -100,19 +100,29 @@ app.get('/paypal_success', function(request, response) {
     var payment_value = request.query.order;
 
     //TODO: AddOrder
-    //  global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
 
-    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString() , status: "completed"}];
+    //var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString() }];
 
-    async.forEach(order_ins, addOrder, function(err) {
-        if (err) {
-            console.log(err);
-            response.send("error adding orders");
-        } else {
-            // orders added successfully
-            response.redirect('/?paypal=success');
-        }
-    });
+    //async.forEach(order_ins, addOrder, function(err) {
+      //  if (err) {
+        //    console.log(err);
+      //      response.send("error adding orders");
+//        } else {
+//            // orders added successfully
+//            response.redirect('/?paypal=success');
+//        }
+//    });
+
+        Order.create({
+          coinbase_id: '"Paypal Donator"',
+          amount: payment_value,
+          time: Date().toString()
+        }).success(function(john) {
+          console.log(Order.values)
+        }).error(function() {
+            console.log('H. have a problem')
+           })
+
 
    //response.redirect('/?paypal=success');
 
