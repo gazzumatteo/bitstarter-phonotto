@@ -86,7 +86,6 @@ app.get('/orders', function(request, response) {
 app.get('/paypal_failed', function(request, response) {
 
 //failed payment, intercept event, redirect to:
-
    response.redirect('/?paypal=failed');
 
 });
@@ -113,10 +112,7 @@ app.get('/paypal_success', function(request, response) {
         }
     });
 
-
-
-    response.writeHead(301, {'Location': '/'});
-    response.end();
+   response.redirect('/?paypal=success');
 
 });
 
