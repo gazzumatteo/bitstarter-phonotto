@@ -99,45 +99,27 @@ app.get('/paypal_success', function(request, response) {
     //semplified express edition
     var payment_value = request.query.order;
 
-    //TODO: AddOrder
-
-    //var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString() }];
-
-    //async.forEach(order_ins, addOrder, function(err) {
-    //  if (err) {
-    //    console.log(err);
-    //      response.send("error adding orders");
-//        } else {
-//            // orders added successfully
-//            response.redirect('/?paypal=success');
-//        }
-//    });
-
     var Order = global.db.Order;
 
-
-
 //cant'be Payapal Donator... isn't unique
-Order.findAndCountAll().success(function(result) {
+    Order.findAndCountAll().success(function(result) {
 
-   Order.create({
-        coinbase_id: 'Paypal Donator' + result.count ,
-        amount: payment_value,
-        time: Date().toString()
-    }).success(function(order) {
-        response.redirect('/?paypal=success&order=' + payment_value);
-        console.log('Inserted into DB');
-    }).error(function() {
-        console.log('H. have a problem');
-        response.redirect('/?paypal=failed');
+        Order.create({
+            coinbase_id: 'Paypal Donator' + result.count,
+            amount: payment_value,
+            time: Date().toString()
+        }).success(function(order) {
+            response.redirect('/?paypal=success&order=' + payment_value);
+            console.log('Inserted into DB');
+        }).error(function() {
+            console.log('H. have a problem');
+            response.redirect('/?paypal=failed');
+        });
+
     });
 
 
 
-});
-
-
- 
 
 
 });
