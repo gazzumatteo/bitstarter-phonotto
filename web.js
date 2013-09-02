@@ -25,14 +25,14 @@ app.get('/', function(request, response) {
     // response.send(data);
 
     //it's a paypal failed?
-    if (req.query.paypal == "failed") {
-        
-        console.log("failed");
-    }
-    else if (req.query.paypal == "success") {
-
-        console.log("success");
-    }
+//    if (req.query.paypal == "failed") {
+//        
+//        console.log("failed");
+//    }
+//    else if (req.query.paypal == "success") {
+//
+//        console.log("success");
+//    }
 
     //get the amount of money async.
     //obtain data.
