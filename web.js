@@ -115,17 +115,29 @@ app.get('/paypal_success', function(request, response) {
 
     var Order = global.db.Order;
 
-    Order.create({
-        coinbase_id: 'Paypal Donator3',
+
+
+//cant'be Payapal Donator... isn't unique
+Order.findAll().success(function(result) {
+
+   Order.create({
+        coinbase_id: 'Paypal Donator' + result.count ,
         amount: payment_value,
         time: Date().toString()
-    }).success(function(john) {
-         response.redirect('/?paypal=success&order='+ payment_value );
-          console.log('Inserted into DB');
+    }).success(function(order) {
+        response.redirect('/?paypal=success&order=' + payment_value);
+        console.log('Inserted into DB');
     }).error(function() {
         console.log('H. have a problem');
-            response.redirect('/?paypal=failed' );
+        response.redirect('/?paypal=failed');
     });
+
+
+
+});
+
+
+ 
 
 
 });
