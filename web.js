@@ -43,7 +43,7 @@ app.get('/', function(request, response) {
         var amount_percentage = Math.round((limit_line / amount) * 100);
         var remains_percentage = 100 - amount_percentage;
 
-        response.render("index", {backers: orders_json, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
+        response.render("index", {backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
 
     }).error(function(err) {
         console.log(err);
