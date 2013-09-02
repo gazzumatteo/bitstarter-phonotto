@@ -28,6 +28,8 @@ app.get('/', function(request, response) {
     if (request.query.paypal == "failed") {
         
         console.log("failed");
+        
+        
     }
     else if (request.query.paypal == "success") {
 
@@ -85,7 +87,7 @@ app.get('/paypal_failed', function(request, response) {
 
 //failed payment, intercept event, redirect to:
 
-   response.redirect('/');
+   response.redirect('/?paypal=failed');
 
 });
 
