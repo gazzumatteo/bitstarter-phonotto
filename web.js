@@ -113,6 +113,8 @@ app.get('/paypal_success', function(request, response) {
 //        }
 //    });
 
+   var Order = global.db.Order;
+
         Order.create({
           coinbase_id: '"Paypal Donator"',
           amount: payment_value,
