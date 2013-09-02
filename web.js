@@ -94,13 +94,15 @@ app.get('/paypal_success', function(request, response) {
 
     //TODO: control if it's really a paypal payment
 
+    console.log('someone pay!');
+
     //semplified express edition
     var payment_value = request.query.order;
 
     //TODO: AddOrder
     //  global.db.Order.insert({coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()})
 
-    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString()}];
+    var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: new Date.now().toString()}];
 
     async.forEach(order_ins, addOrder, function(err) {
         if (err) {
@@ -108,14 +110,13 @@ app.get('/paypal_success', function(request, response) {
             response.send("error adding orders");
         } else {
             // orders added successfully
-            response.redirect("/orders");
+            response.redirect('/?paypal=success');
         }
     });
 
-   response.redirect('/?paypal=success');
+   //response.redirect('/?paypal=success');
 
 });
-
 
 
 // Hit this URL while on example.com/orders to refresh
