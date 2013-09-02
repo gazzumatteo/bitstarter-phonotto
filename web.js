@@ -24,6 +24,16 @@ app.get('/', function(request, response) {
     // var data = fs.readFileSync('index.html').toString();
     // response.send(data);
 
+    //it's a paypal failed?
+    if (req.query.paypal == "failed") {
+        
+        console.log("failed");
+    }
+    else if (req.query.paypal == "success") {
+
+        console.log("success");
+    }
+
     //get the amount of money async.
     //obtain data.
     global.db.Order.findAll().success(function(orders) {
@@ -37,13 +47,13 @@ app.get('/', function(request, response) {
 
         //calculate date diff.  
         var today = new Date();
-      	var diff = Math.round((start_date.getDate() - today.getDate()/ (1000*60*60*24)));
+        var diff = Math.round((start_date.getDate() - today.getDate() / (1000 * 60 * 60 * 24)));
 
-	
+
 
         //percentage 100:limit_line = x : amount
         var amount_percentage = Math.round((amount * 100) / limit_line);
-	//remains
+        //remains
         var remains_percentage = 100 - amount_percentage;
 
         response.render("index", {backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
@@ -75,12 +85,11 @@ app.get('/paypal_failed', function(request, response) {
 
 //failed payment, intercept event, redirect to:
 
-    response.writeHead(301, {'Location': '/'});
-    response.end();
+   res.redirect('/');
 
 });
 
-app.get('/payment_success', function(request, response) {
+app.get('/paypal_success', function(request, response) {
 
     //TODO: control if it's really a paypal payment
 
@@ -109,10 +118,10 @@ app.get('/payment_success', function(request, response) {
 
 });
 
-app.post('/insertmail/:mail', function(request, response){
-    
+app.post('/insertmail/:mail', function(request, response) {
+
     //save mail, where?
-    
+
 })
 
 
