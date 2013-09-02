@@ -116,7 +116,7 @@ app.get('/paypal_success', function(request, response) {
     var Order = global.db.Order;
 
     Order.create({
-        coinbase_id: 'Paypal Donator2',
+        coinbase_id: 'Paypal Donator3',
         amount: payment_value,
         time: Date().toString()
     }).success(function(john) {
