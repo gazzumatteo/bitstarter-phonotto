@@ -39,9 +39,11 @@ app.get('/', function(request, response) {
         var today = new Date();
       	var diff = Math.round((start_date.getDate() - today.getDate()/ (1000*60*60*24)));
 
+	
 
-        //percentage (limit_line/amount)*100
-        var amount_percentage = Math.round((limit_line / amount) * 100);
+        //percentage 100:limit_line = x : amount
+        var amount_percentage = Math.round((amount * 100) / limit_line);
+	//remains
         var remains_percentage = 100 - amount_percentage;
 
         response.render("index", {backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
