@@ -26,10 +26,10 @@ app.get('/', function(request, response) {
 
     //it's a paypal failed?
     var message = "";
-    
-    if (request.query.paypal == "failed") {  
+
+    if (request.query.paypal == "failed") {
         console.log("failed");
-        message = "failed";  
+        message = "failed";
     }
     else if (request.query.paypal == "success") {
         console.log("success");
@@ -86,7 +86,7 @@ app.get('/orders', function(request, response) {
 app.get('/paypal_failed', function(request, response) {
 
 //failed payment, intercept event, redirect to:
-   response.redirect('/?paypal=failed');
+    response.redirect('/?paypal=failed');
 
 });
 
@@ -104,29 +104,28 @@ app.get('/paypal_success', function(request, response) {
     //var order_ins = [{coinbase_id: "Paypal Donator", amount: payment_value, time: Date.now().toString() }];
 
     //async.forEach(order_ins, addOrder, function(err) {
-      //  if (err) {
-        //    console.log(err);
-      //      response.send("error adding orders");
+    //  if (err) {
+    //    console.log(err);
+    //      response.send("error adding orders");
 //        } else {
 //            // orders added successfully
 //            response.redirect('/?paypal=success');
 //        }
 //    });
 
-   var Order = global.db.Order;
+    var Order = global.db.Order;
 
-        Order.create({
-          coinbase_id: '"Paypal Donator"',
-          amount: payment_value,
-          time: Date().toString()
-        }).success(function(john) {
-          console.log(Order.values)
-        }).error(function() {
-            console.log('H. have a problem')
-           })
+    Order.create({
+        coinbase_id: 'Paypal Donator',
+        amount: payment_value,
+        time: Date().toString()
+    }).success(function(john) {
+         response.redirect('/?paypal=success&order='+ payment_value );
+    }).error(function() {
+        console.log('H. have a problem');
+            response.redirect('/?paypal=failed' );
+    });
 
-
-   //response.redirect('/?paypal=success');
 
 });
 
