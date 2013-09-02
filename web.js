@@ -25,14 +25,14 @@ app.get('/', function(request, response) {
     // response.send(data);
 
     //it's a paypal failed?
-//    if (req.query.paypal == "failed") {
-//        
-//        console.log("failed");
-//    }
-//    else if (req.query.paypal == "success") {
-//
-//        console.log("success");
-//    }
+    if (request.query.paypal == "failed") {
+        
+        console.log("failed");
+    }
+    else if (request.query.paypal == "success") {
+
+        console.log("success");
+    }
 
     //get the amount of money async.
     //obtain data.
@@ -85,7 +85,7 @@ app.get('/paypal_failed', function(request, response) {
 
 //failed payment, intercept event, redirect to:
 
-   res.redirect('/');
+   response.redirect('/');
 
 });
 
@@ -118,11 +118,6 @@ app.get('/paypal_success', function(request, response) {
 
 });
 
-app.post('/insertmail/:mail', function(request, response) {
-
-    //save mail, where?
-
-})
 
 
 // Hit this URL while on example.com/orders to refresh
