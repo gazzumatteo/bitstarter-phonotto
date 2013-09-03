@@ -15,8 +15,52 @@ app.set('port', process.env.PORT || 8080);
 app.use(express.static(__dirname + '/public')); // images
 // Render homepage (note trailing slash): example.com/
 app.get('/', function(request, response) {
-  var data = fs.readFileSync('index.html').toString();
-  response.send(data);
+
+    // var data = fs.readFileSync('index.html').toString();
+    // response.send(data);
+
+    //it's a paypal failed?
+    var message = "";
+
+    if (request.query.paypal == "failed") {
+        console.log("failed");
+        message = "failed";
+    }
+    else if (request.query.paypal == "success") {
+        console.log("success");
+        message = "success";
+    }
+
+    //get the amount of money async.
+    //obtain data.
+    global.db.Order.findAll().success(function(orders) {
+        var backers = 0;
+        var amount = 0;
+
+        orders.forEach(function(order) {
+            backers++;
+            amount += order.amount;
+        });
+
+        //calculate date diff.  
+        var today = new Date();
+        var diff = Math.round((start_date.getDate() - today.getDate() / (1000 * 60 * 60 * 24)));
+
+
+
+        //percentage 100:limit_line = x : amount
+        var amount_percentage = Math.round((amount * 100) / limit_line);
+        //remains
+        var remains_percentage = 100 - amount_percentage;
+
+        response.render("index", {message: message, backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
+
+    }).error(function(err) {
+        console.log(err);
+        response.send("error retrieving amounts");
+    });
+
+
 });
 
 // Render example.com/orders
@@ -34,33 +78,77 @@ app.get('/orders', function(request, response) {
   });
 });
 
+app.get('/paypal_failed', function(request, response) {
+
+//failed payment, intercept event, redirect to:
+    response.redirect('/?paypal=failed');
+
+});
+
+app.get('/paypal_success', function(request, response) {
+
+    //TODO: control if it's really a paypal payment
+
+    console.log('someone pay!');
+
+    //semplified express edition
+    var payment_value = request.query.order;
+
+    var Order = global.db.Order;
+
+//cant'be Payapal Donator... isn't unique
+    Order.findAndCountAll().success(function(result) {
+
+        Order.create({
+            coinbase_id: 'Paypal Donator' + result.count,
+            amount: payment_value,
+            time: Date().toString()
+        }).success(function(order) {
+            response.redirect('/?paypal=success&order=' + payment_value);
+            console.log('Inserted into DB');
+        }).error(function() {
+            console.log('H. have a problem');
+            response.redirect('/?paypal=failed');
+        });
+
+    });
+
+
+
+
+
+});
+
+
 // Hit this URL while on example.com/orders to refresh
 app.get('/refresh_orders', function(request, response) {
-  https.get("https://coinbase.com/api/v1/orders?api_key=" + process.env.COINBASE_API_KEY, function(res) {
-    var body = '';
-    res.on('data', function(chunk) {body += chunk;});
-    res.on('end', function() {
-      try {
-        var orders_json = JSON.parse(body);
-        if (orders_json.error) {
-          response.send(orders_json.error);
-          return;
-        }
-        // add each order asynchronously
-        async.forEach(orders_json.orders, addOrder, function(err) {
-          if (err) {
-            console.log(err);
-            response.send("error adding orders");
-          } else {
-            // orders added successfully
-            response.redirect("/orders");
-          }
+    https.get("https://coinbase.com/api/v1/orders?api_key=" + process.env.COINBASE_API_KEY, function(res) {
+        var body = '';
+        res.on('data', function(chunk) {
+            body += chunk;
         });
-      } catch (error) {
-        console.log(error);
-        response.send("error parsing json");
-      }
-    });
+        res.on('end', function() {
+            try {
+                var orders_json = JSON.parse(body);
+                if (orders_json.error) {
+                    response.send(orders_json.error);
+                    return;
+                }
+                // add each order asynchronously
+                async.forEach(orders_json.orders, addOrder, function(err) {
+                    if (err) {
+                        console.log(err);
+                        response.send("error adding orders");
+                    } else {
+                        // orders added successfully
+                        response.redirect("/orders");
+                    }
+                });
+            } catch (error) {
+                console.log(error);
+                response.send("error parsing json");
+            }
+        });
 
     res.on('error', function(e) {
       console.log(e);

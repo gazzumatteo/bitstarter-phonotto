@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Phonotto Crowdfounding Site" />
 <meta property="og:description"
 	content="Crowdfounding site of the smartest way to convert a cheap smartphone in a simple phone for seniors." />
-<link rel="icon" href="http://next.phonotto.com/favicon.ico"
+<link rel="icon" href="http://www.phonotto.com/favicon.ico"
 	type="image/x-icon">
 <!--scripts -->
 <script
@@ -56,7 +56,15 @@
 	.carousel {
 		margin-top: -30px;
 	}
-}
+        #btn_ml {
+			margin-top: 5px;
+        }
+        .thermometer{
+                margin: 0 5px 3px 5px;
+        }
+
+    }
+
 
 /* All form factors */
 
@@ -212,6 +220,21 @@ p {
 	<!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
 	<!-- http://stackoverflow.com/a/12270322 -->
 	<div class="container">
+
+<% if( message == "failed" ){ %>
+<div class="alert alert-error">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Something gone wrong with your payment!. Please retry.
+</div>
+<% } %>
+<% if( message == "success" ){ %>
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Thank you!</strong>
+</div>
+<% } %>
+
+
 		<!-- Font and paired font of .heading/.subheading and body from Google Fonts -->
 		<!-- www.google.com/fonts/specimen/Ubuntu -->
 		<!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
@@ -252,6 +275,7 @@ p {
 						data-slide="prev">&lsaquo;</a> <a class="carousel-control right"
 						href="#myCarousel" data-slide="next">&rsaquo;</a>
 				</div>
+                                <p>Actual Version of <a href="http://www.phonotto.com" target="_blank">Phonotto</a></p>
 			</div>
 
 			<div class="span3 offset1 actions">
@@ -268,7 +292,7 @@ p {
 								<h3>$<%= amount %></h3>
 								<p>of $<%= limit_line %></p>
 								<div class="thermometer progress active">
-									<div class="bar bar-success" style="width: <%= amount_percentage %>50%;"></div>
+									<div class="bar bar-success" style="width: <%= amount_percentage %>%;"></div>
 									<div class="bar bar-warning" style="width: <%= remains_percentage %>%;"></div>
 								</div>
 							</div>
@@ -298,111 +322,108 @@ p {
 		<!-- http://placehold.it -->
 		<div class="row-fluid section1">
 			<div class="span6 offset1 asset">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl,
-					eu mollis justo velit at nunc. Fusce nec egestas sem. Donec
-					fringilla ante lectus, a pellentesque lacus dignissim ac. Sed
-					volutpat lorem ut congue malesuada. In facilisis scelerisque turpis
-					sed lacinia. Donec in orci lectus. Donec auctor semper quam, eget
-					rhoncus purus fringilla id. Phasellus id nibh eu risus ultrices
-					adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing
-					elit. Donec porta, dui sagittis hendrerit rutrum, nunc leo tempus
-					nisl, eu mollis justo velit at nunc. Fusce nec egestas sem. Donec
-					fringilla.</p>
+				<h2> <em>Help Us to develop a new version of <a href="http://www.phonotto.com" target="_blank"><b>Phonotto</b></a></em></h2>
+			<p></p>
+			<p>Tired of all the bells and whistles that come complete in today’s phones? Hi-res cameras, speedy processors and cool apps just aren’t your thing? Whatever the case may be for you (or perhaps parents or grandparents), Phonotto is a wonderful breath of fresh air, it allows you to make/receive calls and send/receive SMS: no frills and no unnecessary features.</p>
+			<p><a href="http://www.phonotto.com" target="_blank"><b>Phonotto</b></a> is an Android app available on the Google Play Store, which means that it replaces your regular home screen with one specifically tailored for people who are just after call and text capabilities. Phonotto does away with the endless junk that many people have on their home screen, providing a very minimal alternative.</p>
+			<p></p>
+
+			<p>The new version require lot of development, the roadmap is hard and the new features are amazing!</p>
+
+			<ul>
+				<li>New User Interface and User Experience</li>
+				<li>Improved Addressbook</li>
+				<li>Camera support</li>
+				<li>Photo gallery</li>
+				<li>Calendar</li>
+				<li>Custom Keyboard (instead the Android one)</li>
+				<li>Multiple Color Themes</li>
+				<li>Dinamic Home buttons</li>
+				<li>Initial Tour and Configuration</li>
+				<li>Contact Picture in the shorcut</li>
+			</ul>
+			<p>And if we reach a goal of 10.000$ we'll work also to build a <b>custom ROM</b><p>
+				<p>Why custom rom?<p>
+					<ul>
+						<li>Android is <a href="http://source.android.com/" target="_blank">OpenSource</a></li>
+						<li>More customization</li>
+						<li>No need to use all android stack</li>
+						<li>Battery lifetime highly increased</li>
+						<li>Custom market and SDK to develop app for Phonotto</li>
+					</ul>
+					<p><br/></p>
+					<p><br/></p>
+					<h3>What people tell about Phonotto:</h3>
+					<p><a href="http://www.androids4seniors.com/android-app-reviews/phonotto-simple-phone-for-seniors/" target="_blank">Androids 4 Seniors</a></p>
+					<p><a href="http://www.dailymobile.net/2012/03/30/phonotto-app-for-seniors-that-makes-complex-smartphones-simple/" target="_blank">Daily Mobile</a></p>
+
 			</div>
+
 			<div class="span3 offset1 copy" name="pledge">
 
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="row-fluid well ">
 							<div class="span10 offset1 row-fluid">
-								<p>Phonotto Stickers</p>
-								<h3>5$</h3>
+								<h3>Free Donation</h3>
+                                                                <p>We will thank you on our website!</p>
 							</div>
 							<div class="span10 offset2 row-fluid">
 								<h3>
-									<form action="https://www.paypal.com/cgi-bin/webscr"
-										method="post" target="_top">
-										<input type="hidden" name="cmd" value="_s-xclick"> <input
-											type="hidden" name="hosted_button_id" value="G6Y7KBRFK4GKG">
-										<input type="image"
-											src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-											border="0" name="submit"
-											alt="PayPal - The safer, easier way to pay online!">
-										<img alt="" border="0"
-											src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif"
-											width="1" height="1">
-									</form>
+                                                                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+											<input type="hidden" name="cmd" value="_s-xclick">
+											<input type="hidden" name="hosted_button_id" value="G6Y7KBRFK4GKG">
+											<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+											<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+										</form>
 
-									<a class="coinbase-button"
-										data-code="f1dbf6aaf5d8f01ac80ab6bd67165e72"
-										data-button-style="donation_small"
-										href="https://coinbase.com/checkouts/f1dbf6aaf5d8f01ac80ab6bd67165e72">Donate
-										Bitcoins</a>
-									<script src="https://coinbase.com/assets/button.js"
-										type="text/javascript"></script>
+
+										<a class="coinbase-button" data-code="1aa5eb064fec8635fd2ec12f56df324a" data-button-style="custom_small" data-custom="1" href="https://coinbase.com/checkouts/1aa5eb064fec8635fd2ec12f56df324a">Donate Bitcoins</a>
+										<script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
 								</h3>
 							</div>
 						</div>
-						<div class="row-fluid  well">
+						<div class="row-fluid well">
 							<div class="span10 offset1 row-fluid">
-								<p>Next App version</p>
-								<h3>10$</h3>
-							</div>
-							<div class="span10 offset2 row-fluid">
-								<h3>
-									<form action="https://www.paypal.com/cgi-bin/webscr"
-										method="post" target="_top">
-										<input type="hidden" name="cmd" value="_s-xclick"> <input
-											type="hidden" name="hosted_button_id" value="383K7NN5BEKKC">
-										<input type="image"
-											src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-											border="0" name="submit"
-											alt="PayPal - The safer, easier way to pay online!">
-										<img alt="" border="0"
-											src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif"
-											width="1" height="1">
-									</form>
+								<p>Next Version plus Betas and website mentions</p>
+									<h3>Donate 8 $</h3>
+									<p>You will receive the fist new version of Phonotto one month before the publishing, one beta releases and a special mention
+										on our website with a link to your site</p>
+										<p class="small">delivery in December 2013</p>
+									</div>
+									<div class="span10 offset2 row-fluid">
+										<h3>
+											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+												<input type="hidden" name="cmd" value="_s-xclick">
+												<input type="hidden" name="hosted_button_id" value="383K7NN5BEKKC">
+												<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+												<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+											</form>
 
-									<a class="coinbase-button"
-										data-code="9e49cfd7210d14232cfcdf038a4b600b"
-										data-button-style="donation_small"
-										href="https://coinbase.com/checkouts/9e49cfd7210d14232cfcdf038a4b600b">Donate
-										Bitcoins</a>
-									<script src="https://coinbase.com/assets/button.js"
-										type="text/javascript"></script>
-								</h3>
-							</div>
+											<a class="coinbase-button" data-code="d8cfd5523efcad04d7e572400fe9cb06" data-button-style="custom_small" data-custom="2" href="https://coinbase.com/checkouts/d8cfd5523efcad04d7e572400fe9cb06">Donate Bitcoins</a>
+										</h3>
+									</div>
 						</div>
 						<div class="row-fluid  well">
 							<div class="span10 offset1 row-fluid">
-								<p>Next App Version included Beta release</p>
-								<h3>15$</h3>
-							</div>
-							<div class="span10 offset2 row-fluid">
-								<h3>
-									<form action="https://www.paypal.com/cgi-bin/webscr"
-										method="post" target="_top">
-										<input type="hidden" name="cmd" value="_s-xclick"> <input
-											type="hidden" name="hosted_button_id" value="LX9PJ2SLUVYU4">
-										<input type="image"
-											src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-											border="0" name="submit"
-											alt="PayPal - The safer, easier way to pay online!">
-										<img alt="" border="0"
-											src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif"
-											width="1" height="1">
-									</form>
+								<p>First Rom</p>
+										<h3>Donate 20 $ or more</h3>
+										<p>You will receive the fist ROM of Phonotto</p>
+										<p class="small">delivery in March 2014</p>
+									</div>
+									<div class="span10 offset2 row-fluid">
+										<h3>
+											<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+												<input type="hidden" name="cmd" value="_s-xclick">
+												<input type="hidden" name="hosted_button_id" value="LX9PJ2SLUVYU4">
+												<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+												<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+											</form>
 
-									<a class="coinbase-button"
-										data-code="691f790f069c88ea764854349f0b68da"
-										data-button-style="donation_small"
-										href="https://coinbase.com/checkouts/691f790f069c88ea764854349f0b68da">Donate
-										Bitcoins</a>
-									<script src="https://coinbase.com/assets/button.js"
-										type="text/javascript"></script>
-								</h3>
-							</div>
+
+											<a class="coinbase-button" data-code="52a8ba9272ce473b850670950b9679f7" data-button-style="custom_small" data-custom="3" href="https://coinbase.com/checkouts/52a8ba9272ce473b850670950b9679f7">Donate Bitcoins</a>
+										</h3>
+									</div>
 						</div>
 					</div>
 				</div>
@@ -419,32 +440,37 @@ p {
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse"
-								data-parent="#accordion2" href="#collapseOne"> What does FAQ
-								stand for? </a>
-						</div>
+						data-parent="#accordion2" href="#collapseOne">What I have to do for receive the next version of this app? </a>
+								</div>
 						<div id="collapseOne" class="accordion-body collapse">
-							<div class="accordion-inner">Frequently Asked Question.</div>
+							<div class="accordion-inner">If you have donated 8 USD using the donate button we will contact you at the email used to donate.</div>
 						</div>
 					</div>
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse"
-								data-parent="#accordion2" href="#collapseTwo"> What's a
-								Frequently Asked Question? </a>
-						</div>
+						data-parent="#accordion2" href="#collapseTwo">If I donate for the ROM and you don't reach the 10.000 $?</a>
+</div>
 						<div id="collapseTwo" class="accordion-body collapse">
-							<div class="accordion-inner">A question which is commonly
-								asked by users.</div>
-						</div>
+							<div class="accordion-inner">All users that donate for the ROM will be reimboursed at the end of the founding process.</div>
 					</div>
 				</div>
 			</div>
 		</div>
+</div>
 
-		<div class="row-fluid faq" name="contacts">
-			<div class="span10 offset1">
-				<h3>MAILING LIST</h3>
-			</div>
+		<div class="row-fluid mail" name="contacts">
+					<div class="span10 offset1 well" style="text-align:center" id="mc_embed_signup">
+						<p class="form-inline">
+							<form action="http://gammapps.us6.list-manage.com/subscribe/post?u=5bfbe4b13653e7859cb372fe2&amp;id=1ff79cba7b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-horizontal" target="_blank" novalidate>
+								<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Insert you e-mail" />
+								<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-info button">Join our Mailing List</button>
+							</form>
+							<div id="mce-responses" class="clear">
+								<div class="response" id="mce-error-response" style="display:none"></div>
+								<div class="response" id="mce-success-response" style="display:none"></div>
+							</div>
+</p>
 		</div>
 		<!-- Not crucial, but we put this under a CC By-SA 3.0 license. -->
 		<!-- http://creativecommons.org/licenses/ -->
@@ -521,5 +547,198 @@ p {
 		}
 	</script>
 	<!-- AddThis Smart Layers END -->
+<!-- MAIL CHIMP -->
+			<script type="text/javascript">
+			var fnames = new Array();var ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';
+			try {
+				var jqueryLoaded=jQuery;
+				jqueryLoaded=true;
+			} catch(err) {
+				var jqueryLoaded=false;
+			}
+			var head= document.getElementsByTagName('head')[0];
+			if (!jqueryLoaded) {
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.src = '//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js';
+				head.appendChild(script);
+				if (script.readyState && script.onload!==null){
+					script.onreadystatechange= function () {
+						if (this.readyState == 'complete') mce_preload_check();
+					}
+				}
+			}
+
+			var err_style = '';
+			try{
+				err_style = mc_custom_error_style;
+			} catch(e){
+				err_style = '#mc_embed_signup input.mce_inline_error{border-color:#6B0505;} #mc_embed_signup div.mce_inline_error{margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff;}';
+			}
+			var head= document.getElementsByTagName('head')[0];
+			var style= document.createElement('style');
+			style.type= 'text/css';
+			if (style.styleSheet) {
+				style.styleSheet.cssText = err_style;
+			} else {
+				style.appendChild(document.createTextNode(err_style));
+			}
+			head.appendChild(style);
+			setTimeout('mce_preload_check();', 250);
+
+			var mce_preload_checks = 0;
+			function mce_preload_check(){
+				if (mce_preload_checks>40) return;
+				mce_preload_checks++;
+				try {
+					var jqueryLoaded=jQuery;
+				} catch(err) {
+					setTimeout('mce_preload_check();', 250);
+					return;
+				}
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.src = 'http://downloads.mailchimp.com/js/jquery.form-n-validate.js';
+				head.appendChild(script);
+				try {
+					var validatorLoaded=jQuery("#fake-form").validate({});
+				} catch(err) {
+					setTimeout('mce_preload_check();', 250);
+					return;
+				}
+				mce_init_form();
+			}
+			function mce_init_form(){
+				jQuery(document).ready( function($) {
+					var options = { errorClass: 'mce_inline_error', errorElement: 'div', onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
+					var mce_validator = $("#mc-embedded-subscribe-form").validate(options);
+      $("#mc-embedded-subscribe-form").unbind('submit');//remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
+      options = { url: 'http://gammapps.us6.list-manage.com/subscribe/post-json?u=5bfbe4b13653e7859cb372fe2&id=1ff79cba7b&c=?', type: 'GET', dataType: 'json', contentType: "application/json; charset=utf-8",
+      beforeSubmit: function(){
+      	$('#mce_tmp_error_msg').remove();
+      	$('.datefield','#mc_embed_signup').each(
+      		function(){
+      			var txt = 'filled';
+      			var fields = new Array();
+      			var i = 0;
+      			$(':text', this).each(
+      				function(){
+      					fields[i] = this;
+      					i++;
+      				});
+      			$(':hidden', this).each(
+      				function(){
+      					var bday = false;
+      					if (fields.length == 2){
+      						bday = true;
+                                            fields[2] = {'value':1970};//trick birthdays into having years
+                                          }
+                                          if ( fields[0].value=='MM' && fields[1].value=='DD' && (fields[2].value=='YYYY' || (bday && fields[2].value==1970) ) ){
+                                          	this.value = '';
+                                          } else if ( fields[0].value=='' && fields[1].value=='' && (fields[2].value=='' || (bday && fields[2].value==1970) ) ){
+                                          	this.value = '';
+                                          } else {
+                                          	if (/\[day\]/.test(fields[0].name)){
+                                          		this.value = fields[1].value+'/'+fields[0].value+'/'+fields[2].value;
+                                          	} else {
+                                          		this.value = fields[0].value+'/'+fields[1].value+'/'+fields[2].value;
+                                          	}
+                                          }
+                                        });
+});
+$('.phonefield-us','#mc_embed_signup').each(
+	function(){
+		var fields = new Array();
+		var i = 0;
+		$(':text', this).each(
+			function(){
+				fields[i] = this;
+				i++;
+			});
+		$(':hidden', this).each(
+			function(){
+				if ( fields[0].value.length != 3 || fields[1].value.length!=3 || fields[2].value.length!=4 ){
+					this.value = '';
+				} else {
+					this.value = 'filled';
+				}
+			});
+	});
+return mce_validator.form();
+},
+success: mce_success_cb
+};
+$('#mc-embedded-subscribe-form').ajaxForm(options);
+
+
+});
+}
+function mce_success_cb(resp){
+	$('#mce-success-response').hide();
+	$('#mce-error-response').hide();
+	if (resp.result=="success"){
+		$('#mce-'+resp.result+'-response').show();
+		$('#mce-'+resp.result+'-response').html(resp.msg);
+		$('#mc-embedded-subscribe-form').each(function(){
+			this.reset();
+		});
+	} else {
+		var index = -1;
+		var msg;
+		try {
+			var parts = resp.msg.split(' - ',2);
+			if (parts[1]==undefined){
+				msg = resp.msg;
+			} else {
+				i = parseInt(parts[0]);
+				if (i.toString() == parts[0]){
+					index = parts[0];
+					msg = parts[1];
+				} else {
+					index = -1;
+					msg = resp.msg;
+				}
+			}
+		} catch(e){
+			index = -1;
+			msg = resp.msg;
+		}
+		try{
+			if (index== -1){
+				$('#mce-'+resp.result+'-response').show();
+				$('#mce-'+resp.result+'-response').html(msg);
+			} else {
+				err_id = 'mce_tmp_error_msg';
+				html = '<div id="'+err_id+'" style="'+err_style+'"> '+msg+'</div>';
+
+				var input_id = '#mc_embed_signup';
+				var f = $(input_id);
+				if (ftypes[index]=='address'){
+					input_id = '#mce-'+fnames[index]+'-addr1';
+					f = $(input_id).parent().parent().get(0);
+				} else if (ftypes[index]=='date'){
+					input_id = '#mce-'+fnames[index]+'-month';
+					f = $(input_id).parent().parent().get(0);
+				} else {
+					input_id = '#mce-'+fnames[index];
+					f = $().parent(input_id).get(0);
+				}
+				if (f){
+					$(f).append(html);
+					$(input_id).focus();
+				} else {
+					$('#mce-'+resp.result+'-response').show();
+					$('#mce-'+resp.result+'-response').html(msg);
+				}
+			}
+		} catch(e){
+			$('#mce-'+resp.result+'-response').show();
+			$('#mce-'+resp.result+'-response').html(msg);
+		}
+	}
+}
+
+</script>
+<!--End mc_embed_signup :)-->
 </body>
 </html>
