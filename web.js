@@ -49,7 +49,7 @@ app.get('/', function(request, response) {
 
         //calculate date diff.  
         var today = new Date();
-        var diff = Math.round((start_date.getDate() - today.getDate() / (1000 * 60 * 60 * 24)));
+        var diff = Math.round(((start_date - today) / (1000 * 60 * 60 * 24)));
 
 
 
