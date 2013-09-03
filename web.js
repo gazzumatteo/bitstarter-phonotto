@@ -58,7 +58,7 @@ app.get('/', function(request, response) {
         //remains
         var remains_percentage = 100 - amount_percentage;
 
-        response.render("index", {message: message, backers: backers, amount: amount, limit_line: limit_line, date_diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
+        response.render("index", {message: message, backers: backers, amount: amount, limit_line: limit_line, diff: diff, amount_percentage: amount_percentage, remains_percentage: remains_percentage});
 
     }).error(function(err) {
         console.log(err);
