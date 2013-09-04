@@ -10,7 +10,7 @@ var async = require('async')
         , url = require('url');
 
 var limit_line = 10000;
-var start_date = new Date(2013, 10, 30);
+var start_date = new Date(2013, 09, 30);
 
 var app = express();
 app.set('views', __dirname + '/views');
